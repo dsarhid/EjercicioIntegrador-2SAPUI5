@@ -1,0 +1,15 @@
+<mvc:View controllerName="integrador2.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:m="sap.m"
+    xmlns="sap.f">
+    <m:App id="app">
+        <FlexibleColumnLayout
+            autoFocus="false"
+            id="fcl"
+            stateChange="onStateChanged"
+            restoreFocusOnBackNavigation="true"
+            layout="{appView>/layout}"
+            backgroundDesign="Translucent"/>
+    </m:App>
+</mvc:View>

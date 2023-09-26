@@ -1,0 +1,76 @@
+<mvc:View displayBlock="true" controllerName="integrador2.controller.List" height="100%"
+	  xmlns="sap.m"
+	  xmlns:f="sap.f"
+	  xmlns:mvc="sap.ui.core.mvc">
+	<f:DynamicPage id="dynamicPageId"
+				   toggleHeaderOnTitleClick="false">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<!-- <Title text="Products ({products>/ProductCollectionStats/Counts/Total})"/> -->
+					<Title text="{i18n>Products}"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+
+		<!-- DynamicPage Content -->
+		<f:content>
+			<Table
+				id="idTableProducts"
+				mode="SingleSelectMaster"
+				itemPress="onListItemPress"
+				inset="false"
+				items="{productCategoriesModel>/results}" 
+				class="sapFDynamicPageAlignContent"
+				width="auto">
+				<headerToolbar>
+					<OverflowToolbar>
+						<SearchField liveChange='.onSearch' width="17.5rem"/>
+						<ToolbarSpacer/>
+						<OverflowToolbarButton icon="sap-icon://sort" type="Transparent" press="onSort"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="12em">
+						<Text text="{i18n>ProductName}" />
+					</Column>
+					<Column width="12em">
+						<Text text="{i18n>Category}" />
+					</Column>
+					<Column width="12em">
+						<Text text="{i18n>UnitsInStock}" />
+					</Column>
+					<Column width="12em">
+						<Text text="{i18n>Discontinued}" />
+					</Column>
+					<Column	hAlign="End">
+						<Text text="{i18n>QuantityPerUnit}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation">
+						<cells>
+							<Text text="{productCategoriesModel>ProductName}" />
+							<Text text="{productCategoriesModel>CategoryName}" />
+							<Text text="{path: 'productCategoriesModel>UnitsInStock', formatter: '.Formatter.agreeUnits'}" />
+
+							<Text text="{productCategoriesModel>Discontinued}" />
+							<!-- <Text text="{parts: [{path: 'productCategoriesModel>Name'},{path:'productCategoriesModel>ProductsID'}], formatter: '.Formatter.cambioNombre'}" /> -->
+							<Text text="{productCategoriesModel>QuantityPerUnit}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Accept"/>
+				<Button type="Reject" text="Reject"/>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</mvc:View>
